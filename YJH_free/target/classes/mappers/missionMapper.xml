@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC ".//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.tukorea.free.mapper.MissionMapper">
+	<insert id="insert">
+		insert into mission_free (id, missionname, goal, reward) values
+		(#{id}, #{missionname}, #{goal}, #{reward})
+	</insert>
+	
+	<select id="selectByid" resultType="org.tukorea.free.domain.MissionVO">
+		<![CDATA[
+			select * from mission_free where missionname = #{missionname}
+		]]>
+	</select>
+	
+	<select id="selectAll" resultType="org.tukorea.free.domain.MissionVO">
+		<![CDATA[
+			select * from mission_free 
+		]]>
+	</select> <!--where id = #{id}-->
+	
+	<select id="selectByMissionname" resultType="org.tukorea.free.domain.MissionVO">
+		<![CDATA[
+			select * from mission_free  where missionname = #{missionname}
+		]]>
+	</select>
+	
+	<update id="update">
+		update mission_free set id = #{id}, missionname = #{missionname}, goal = #{goal}, reward = #{reward}
+		where mission_id = #{mission_id} 
+	</update>
+	
+	<delete id="delete">
+		delete from mission_free where mission_id = #{mission_id}
+	</delete>
+</mapper>
